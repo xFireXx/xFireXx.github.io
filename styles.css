@@ -14,6 +14,111 @@ html {
     position: relative;
 }
 
+.navigation-desktop {
+    display: none;
+    flex-direction: row;
+    justify-content: space-around;
+    font-size: 22px;
+}
+
+.hamburger {
+    padding: 10px;
+    display: inline-block;
+    cursor: pointer;
+    background-color: transparent;
+    border: 0;
+    margin: 0;
+}
+
+.hamburger, .navigation {
+    transition: transform .3s .1s ease-in-out;
+}
+
+.hamburger--active {
+    transform: translatex(250px);
+}
+
+.hamburger__box {
+    width: 35px;
+    height: 24px;
+    display: inline-block;
+    position: relative;
+}
+
+.hamburger__inner {
+    width: 100%;
+    height: 3px;
+    background-color: #fff;
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    transition: background-color .1s .2s ease-in-out;
+}
+
+.hamburger__inner::before,
+.hamburger__inner::after {
+
+    width: 100%;
+    height: 3px;
+    background-color: #fff;
+    position: absolute;
+    content: '';
+    left: 0;
+    transition: transform .2s .2s ease-in-out;
+}
+
+.hamburger__inner::before {
+    top: -10px;
+}
+
+.hamburger__inner::after {
+    top: 10px;
+}
+
+.hamburger--active .hamburger__inner {
+    background-color: transparent;
+}
+
+.hamburger--active .hamburger__inner:before {
+    transform: translateY(10px) rotate(45deg);
+}
+
+.hamburger--active .hamburger__inner:after {
+    transform: translateY(-10px) rotate(-45deg);
+}
+
+.navigation {
+    height: 100vh;
+    width: 250px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    transform: translateX(-250px);
+}
+
+.navigation--active {
+    transform: translateX(0px);
+}
+
+.navigation__list {
+    margin-top: 50px;
+    list-style: none;
+}
+.navigation__item {
+    font-size: 20px;
+    margin-bottom: 10px;
+    text-transform: uppercase;
+}
+
+a {
+    text-decoration: none;
+    color: #fff;
+    margin-bottom: 40px;
+
+}
+
+
 .waves {
     position: absolute;
     width: 100%;
@@ -153,6 +258,7 @@ html {
     flex-direction: row;
     justify-content: center;
 }
+
 .h3-faq {
     text-align: center;
 }
@@ -163,15 +269,26 @@ html {
     padding: 10px;
     text-align: center;
 }
+
 @media screen and (min-width: 760px) {
     .faq-flex {
         flex-direction: row;
     }
+
     .faq {
         margin: 10px;
     }
 }
 
+
+@media screen and (min-width: 750px) {
+    .hamburger {
+        display: none;
+    }
+    .navigation-desktop {
+        display: flex;
+    }
+}
 
 @media screen and (min-width: 800px) {
     .features-flex {
@@ -190,10 +307,12 @@ html {
         width: 60%;
     }
 }
+
 @media screen and (min-width: 1280px) {
     .section-watch {
         flex-direction: row;
     }
+
     .p-section {
         width: 50%;
     }
@@ -202,12 +321,13 @@ html {
         width: 90%;
         margin-right: 80px;
     }
+
     .h2-section {
         font-size: 30px;
     }
 }
 
-@media(max-width: 768px) {
+@media (max-width: 768px) {
     .hamburger {
         display: block;
     }
@@ -215,6 +335,7 @@ html {
     .hamburger.active .bar:nth-child(2) {
         opacity: 0;
     }
+
     .hamburger.active .bar:nth-child(1) {
         transform: translate()
     }
